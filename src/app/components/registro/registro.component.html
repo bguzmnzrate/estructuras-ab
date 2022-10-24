@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-around m-3">
+  <div class="card col-md-4">
+    <div class="card-body">
+      <div class="d-flex">
+        <!-- title -->
+        <h4 class="card-title">Registro</h4>
+      </div>
+      <form [formGroup]="formRegistro" autocomplete="off">
+        <div class="form-group row mb-3">
+          <label for="nombre" class="col-sm-6 form-label">Nombre </label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre Persona natural o Empresa" formControlName="nombre">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="rut" class="col-sm-6 form-label">RUT </label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="rut" placeholder="Ej: 12345678-9" formControlName="rut">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="email" class="col-sm-6 form-label">Correo electrónico</label>
+          <div class="col-sm-12">
+            <input type="email" class="form-control" id="email" placeholder="@Correo electrónico" formControlName="email">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="direccion" class="col-sm-6 form-label">Dirección </label>
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="direccion" placeholder="Calle, 123, Comuna, Ciudad" formControlName="direccion">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="contrasena" class="col-sm-6 form-label">Cree su contraseña</label>
+          <div class="col-sm-12">
+            <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" formControlName="contrasena">
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="contrasena2" class="col-sm-6 form-label">Repita su contraseña</label>
+          <div class="col-sm-12">
+            <input type="password" class="form-control" id="contrasena2" placeholder="Contraseña" formControlName="contrasena2">
+          </div>
+        </div>
+        <div  class="row justify-content-end mt-3">
+          <button type="button" class="btn btn-primary ml-2" >
+              Registrarme
+          </button>
+        </div>
+        <div  class="row justify-content-end mt-3">
+          <button type="button" class="btn btn-primary ml-2" routerLink="/iniciar-sesion">
+            Ya tengo cuenta
+        </button>
+        </div>
+
+
+
+    </form>
+
+    </div>
+</div>
+</div>
