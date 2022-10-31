@@ -10,7 +10,8 @@ import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 import { Injectable } from '@angular/core';
-import { LoginData } from '../interfaces/login-data.interface';
+import { LoginData, RegisterData } from '../interfaces/login-data.interface';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +19,16 @@ import { LoginData } from '../interfaces/login-data.interface';
 export class AuthFirebaseService {
 
  constructor(
+  //private angularfireauth: AngularFireAuth,
   private auth: Auth) {}
 
   login(loginData: LoginData) {
     return signInWithEmailAndPassword(this.auth, loginData.email, loginData.password);
   }
 
-  /*register({ email, password }: LoginData) {
-    return createUserWithEmailAndPassword(this.auth, email, password);
-  }*/
+  registrar({ email, contrasena2 }: RegisterData) {
+    return createUserWithEmailAndPassword(this.auth, email, contrasena2);
+  }
 
   logout() {
     return signOut(this.auth);

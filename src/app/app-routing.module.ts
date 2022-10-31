@@ -10,7 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { IniciarSesionComponent } from './components/iniciar-sesion/iniciar-sesion.component';
 import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { FullComponent } from './layouts/full/full.component';
-import { RegistroComponent } from './components/registro/registro.component';
+import { RegistroComponent } from './auth/registro/registro.component';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 
 //const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['iniciar-sesion']);

@@ -22,6 +22,9 @@ import { getFirestore, provideFirestore, } from '@angular/fire/firestore';
 import { provideAuth, getAuth} from '@angular/fire/auth';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { firebaseConfig } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
+
 //NgBootstrap
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -29,7 +32,7 @@ import { LoginService } from './components/iniciar-sesion/login.service';
 import { DataServices } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FullComponent } from './layouts/full/full.component';
-import { RegistroComponent } from './components/registro/registro.component';
+import { RegistroComponent } from './auth/registro/registro.component';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 /*
 const appRoutes:Routes=[
