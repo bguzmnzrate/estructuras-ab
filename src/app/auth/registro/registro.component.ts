@@ -50,7 +50,9 @@ export class RegistroComponent implements OnInit {
     Swal.fire('Un momento...');
     Swal.showLoading();
     let data=this.formRegistro.value;
+    //console.log(data);
     this.authFS.registrar(data)
+
     .then(()=>{
       Swal.hideLoading();
       Swal.fire({
