@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { RegisterData } from 'src/app/auth/interfaces/login-data.interface';
 import { AuthFirebaseService } from 'src/app/auth/services/auth-firebase.service';
 import Swal from 'sweetalert2';
+import { ColeccionesService } from './colecciones.service';
 
 
 @Component({
@@ -34,15 +35,18 @@ export class RegistroComponent implements OnInit {
     perfil:new FormControl('cliente')
   })
 
-
-
-
   constructor(
     private router: Router,
-    private authFS:AuthFirebaseService
+    private authFS:AuthFirebaseService,
+    private usuariosService:ColeccionesService
   ) { }
 
   ngOnInit(): void {
+
+  }
+  async capturarUid(){
+    const uid = await this.authFS.getUid();
+    console.log('uid ->',uid);
 
   }
 
@@ -52,8 +56,10 @@ export class RegistroComponent implements OnInit {
     let data=this.formRegistro.value;
     //console.log(data);
     this.authFS.registrar(data)
-
-    .then(()=>{
+    .then((data)=>{
+      const uidfb = data.user.uid;
+      this.createUsuario(uidfb);
+      this.capturarUid();
       Swal.hideLoading();
       Swal.fire({
         icon: 'success',
@@ -69,6 +75,33 @@ export class RegistroComponent implements OnInit {
         title: 'Oops...',
         text: e.message
       });
+    });
+  }
+  createUsuario(uidfb:string): void {
+    Swal.fire('Un momento...');
+    Swal.showLoading();
+
+    let usuario=this.formRegistro.value;
+    this.formRegistro.value.contrasena = null;
+    this.formRegistro.value.contrasena2 = null;
+
+    this.usuariosService.createUsuarioCollection(usuario, uidfb).then((uuid:string)=>{
+      Swal.hideLoading();
+        Swal.fire({
+          icon: 'success',
+          title: 'Cliente registrado correctamente',
+          showConfirmButton: false,
+          timer: 5000
+        });
+        //this.getCustomers();
+        this.formRegistro.reset();
+    }).catch(err=>{
+      Swal.hideLoading();
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err
+        });
     });
   }
 

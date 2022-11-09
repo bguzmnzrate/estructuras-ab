@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { 
+import {
   Firestore,
   collectionData,
   collection,
@@ -25,7 +25,7 @@ export class ClientesService {
   customersCollection;
 
   constructor(firestore:Firestore) {
-    this.customersCollection =collection(firestore,'customers');
+    this.customersCollection =collection(firestore,'Usuarios');
   };
 
   createCustomer(customer:any) {
@@ -38,7 +38,8 @@ export class ClientesService {
   };
 
   getCustomers():Observable<any[]>{
-    return collectionData(this.customersCollection, { idField: 'customer' });
+    return collectionData(this.customersCollection, { idField: 'Customers' });
+
   }
 
   updateCustomer(customer:any,uuid:string) {

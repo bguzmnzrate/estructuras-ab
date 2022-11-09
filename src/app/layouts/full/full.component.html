@@ -32,11 +32,15 @@
           <a class="nav-link" href="/presupuestos" >Presupuestos</a>
         </li>
         <li class="nav-item" *ngIf="isLogged !== null">
-          <a class="nav-link" href="/solicitudes" >Solicitudes</a>
+          <a class="nav-link" href="/solicitudes" >Solicitudes Cliente</a>
+        </li>
+        <li class="nav-item" *ngIf="isLogged !== null">
+          <a class="nav-link" href="/adminsolicitudes" >Solicitudes Admin</a>
         </li>
         <li class="nav-item" *ngIf="isLogged !== null">
           <a class="nav-link" href="#"  (click)=logout() >Cerrar Sesión</a>
         </li>
+
       </ul>
     </div>
   </div>

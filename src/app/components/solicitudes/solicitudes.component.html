@@ -3,10 +3,10 @@
     <div class="card-body">
       <div class="d-flex justify-content-between">
         <!-- title -->
-        <h4 class="card-title">Solicitudes</h4>
+        <h4 class="card-title">Solicitudes Cliente</h4>
         <div class="ml-auto">
           <div class="dl">
-            <button type="button" class="ml-2 btn btn-primary" >
+            <button type="button" class="ml-2 btn btn-primary" (click)="openModal(content,'create',null)">
               <i class="mdi mdi-plus"></i>
             </button>
           </div>
@@ -14,7 +14,102 @@
       </div>
     </div>
   </div>
-</div>
+  <div class="table-responsive d-none d-sm-none d-md-block">
+      <table class="table mb-0 no-wrap v-middle">
+          <thead class="">
+              <tr class="bg-light">
+                  <th class="border-top-0">#</th>
+                  <th class="border-top-0">Nombre</th>
+                  <th class="border-top-0">Archivo</th>
+                  <th class="border-top-0">Fecha creación</th>
+                  <th class="border-top-0">Fecha modificación</th>
+                  <th class="border-top-0">Estado</th>
+                  <th class="border-top-0">Acción</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor='let data of solicitudes;let i = index'>
+                  <td>{{i+1}}</td>
+                  <td>
+                      <span>
+                        {{data.nombreSolicitud}}
+                      </span>
+                  </td>
+                  <td>
+                      <span>
+                        {{data.archivo}}
+                      </span>
+                  </td>
+                  <td>
+                    <span>
+                      <!-- fecha creación -->
+                    </span>
+                  </td>
+                  <td>
+                    <span>
+                       <!-- fecha modificacion -->
+                    </span>
+                  </td>
+                  <td>
+                    <span>
+                       <!-- estado -->
+                    </span>
+                  </td>
+
+                  <td class="text-center">
+                      <div class="d-flex justify-content-center">
+                        <a class="mx-2 pl-3" (click)="openModal(content,'update',data)">
+                            <i class="mdi mdi-border-color"></i>
+                        </a>
+                      </div>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+  </div>
+
+<!--NgbModal-->
+<ng-template #content let-modal class="modal-dialog modal-dialog-centered">
+  <div class="modal-header">
+      <h4 class="modal-title">{{modalTitle}}</h4>
+      <button type="button" aria-label="Close" class="close" (click)="modal.dismiss('Cross click')">
+          <span  aria-hidden="true">×</span>
+      </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="form" autocomplete="off">
+      <div class="form-group row mb-3">
+        <label for="nombreSolicitud" class="col-sm-6 form-label">Nombre Solicitud</label>
+        <div class="col-sm-12">
+          <input type="text" class="form-control" id="nombreSolicitud" placeholder="Nombre proyecto" formControlName="nombreSolicitud">
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label for="archivo" class="col-sm-6 form-label">Archivo</label>
+        <div class="col-sm-12">
+          <input type="text" class="form-control" id="archivo" placeholder="Nombre proyecto" formControlName="archivo">
+        </div>
+      </div>
+    </form>
+
+    <div  class="row justify-content-end mt-3">
+      <div class="col-md-2 mr-2">
+        <button type="button" class="btn btn-secondary mr-2" (click)="modal.close('Close click')">
+          Cancelar
+        </button>
+      </div>
+      <div class="col-md-2 mr-2">
+        <button *ngIf="action=='update'" type="submit" class="btn btn-primary" (click)="updateSolicitud();modal.close('Close click')" [disabled]="!form.valid">
+          Actualizar
+        </button>
+        <button *ngIf="action!='update'" type="submit" class="btn btn-primary" (click)="createSolicitudes();modal.close('Close click')" [disabled]="!form.valid">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
 
 
 

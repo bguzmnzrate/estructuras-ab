@@ -12,6 +12,7 @@ import { NosotrosComponent } from './components/nosotros/nosotros.component';
 import { FullComponent } from './layouts/full/full.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
+import { SolicitudesadminComponent } from './components/solicitudesadmin/solicitudesadmin.component';
 
 //const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['iniciar-sesion']);
 //const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
@@ -41,6 +42,11 @@ const routes: Routes = [
         {
           path: 'solicitudes',
           component:SolicitudesComponent,
+          canActivate: [AuthFireGuard]
+        },
+        {
+          path: 'adminsolicitudes',
+          component:SolicitudesadminComponent,
           canActivate: [AuthFireGuard]
         },
         {

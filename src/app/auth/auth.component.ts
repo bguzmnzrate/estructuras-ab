@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //Forms
-import { 
+import {
   FormBuilder,
   FormControl,
   FormArray,
@@ -33,9 +33,18 @@ export class AuthComponent implements OnInit {
     private authFS:AuthFirebaseService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
+
+
 
   }
+
+  async capturarUid(){
+    const uid = await this.authFS.getUid();
+    console.log('uid ->',uid);
+
+  }
+
 
   login(): void {
     Swal.fire('Un momento...');
@@ -43,6 +52,7 @@ export class AuthComponent implements OnInit {
     let data=this.form.value;
     this.authFS.login(data)
     .then(()=>{
+      this.capturarUid();
       Swal.hideLoading();
       Swal.fire({
         icon: 'success',

@@ -20,9 +20,10 @@ export class AuthFireGuard implements CanActivate {
     private router: Router,
     private authFS:AuthFirebaseService) { }
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
+
     return new Promise((resolve, reject) => {
       this.authFS.isLogged().subscribe(user=>{
+        console.log('user: ',user)
         if(!user){
           this.router.navigate(['/iniciar-sesion']);
           resolve(false)

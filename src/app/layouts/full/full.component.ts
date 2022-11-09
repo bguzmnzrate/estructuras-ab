@@ -7,6 +7,7 @@ import { filter, takeUntil, take} from 'rxjs/operators';
 import { AuthFirebaseService } from '../../auth/services/auth-firebase.service';
 //SweetAlert
 import Swal from 'sweetalert2';
+import { ColeccionesService } from 'src/app/auth/registro/colecciones.service';
 
 @Component({
   selector: 'app-full',
@@ -14,6 +15,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./full.component.scss']
 })
 export class FullComponent implements OnInit,OnDestroy {
+  usuarios:any[]=[];
 
   isLogged:any;
   // Private
@@ -21,7 +23,8 @@ export class FullComponent implements OnInit,OnDestroy {
 
   constructor(
     private router: Router,
-    private authFS:AuthFirebaseService) {
+    private authFS:AuthFirebaseService,
+    private coleccion:ColeccionesService) {
 
     // Set the private defaults
     this._unsubscribeAll = new Subject();
@@ -54,6 +57,28 @@ export class FullComponent implements OnInit,OnDestroy {
       });
     });
   }
+
+  isCliente(){
+      this.coleccion.getUsuarios().subscribe(data=>{
+        this.usuarios=data;
+        console.log('usuarios->',data);
+      },(error: any) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.message
+        });
+      });
+    }
+
+    isCliente2(){
+      const uidusuario = this.authFS.getUid
+      const docuementos = this.authFS.getDocumentsUsuarios;
+      console.log('docuemntos',docuementos);
+    }
+
+
+
 
   ngOnDestroy(): void {
     // Unsubscribe from all subscriptions

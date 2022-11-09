@@ -1,6 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 //Forms
-import { 
+import {
   FormBuilder,
   FormControl,
   FormArray,
@@ -85,6 +85,7 @@ export class InsumosServiciosComponent implements OnInit {
   getSupplies(): void {
     this.supplieService.getSupplies().subscribe(data=>{
       this.supplies=data;
+      console.log('insumos->',data[0]);
     },(error: any) => {
       Swal.fire({
         icon: 'error',
@@ -155,7 +156,7 @@ export class InsumosServiciosComponent implements OnInit {
           });
         });
       }
-    }); 
+    });
   }
 
   /*searchSupplie(searchText:string): void {

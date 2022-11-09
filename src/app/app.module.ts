@@ -34,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FullComponent } from './layouts/full/full.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
+import { SolicitudesadminComponent } from './components/solicitudesadmin/solicitudesadmin.component';
 /*
 const appRoutes:Routes=[
     {path: '', component:HomeComponent},
@@ -60,6 +61,7 @@ const appRoutes:Routes=[
     FullComponent,
     RegistroComponent,
     SolicitudesComponent,
+    SolicitudesadminComponent,
   ],
   imports: [
     BrowserModule,
