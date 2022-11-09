@@ -1,6 +1,7 @@
 <div class = 'container'>
   <div class="card">
     <div class="card-body">
+
       <div class="d-flex justify-content-between">
         <!-- title -->
         <h4 class="card-title">Solicitudes Admin</h4>
@@ -10,6 +11,57 @@
           </div>
         </div>
       </div>
+      <!-- title -->
+    </div>
+    <div class="table-responsive d-none d-sm-none d-md-block">
+        <table class="table mb-0 no-wrap v-middle">
+            <thead class="">
+                <tr class="bg-light">
+                  <th class="border-top-0">#</th>
+                  <th class="border-top-0">Nombre</th>
+                  <th class="border-top-0">Archivo</th>
+                  <th class="border-top-0">Cliente</th>
+                  <th class="border-top-0">Fecha creación</th>
+                  <th class="border-top-0">Fecha modificación</th>
+                  <th class="border-top-0">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let data of solicitudes;let i = index'>
+                  <td>{{i+1}}</td>
+                  <td>
+                      <span>
+                        {{data.nombreSolicitud}}
+                      </span>
+                  </td>
+                  <td>
+                      <span>
+                        {{data.archivo}}
+                      </span>
+                  </td>
+                  <td>
+                    <span>
+                      <!-- cliente -->
+                    </span>
+                  </td>
+                  <td>
+                    <span>
+                      <!-- fecha creación -->
+                    </span>
+                  </td>
+                  <td>
+                    <span>
+                       <!-- fecha modificacion -->
+                    </span>
+                  </td>
+                  <td>
+                    <span>
+                      <button type="button" class="btn btn-default">Sin Respuesta</button>
+                    </span>
+                  </td>
+              </tr>
+          </tbody>
+        </table>
     </div>
   </div>
 </div>
