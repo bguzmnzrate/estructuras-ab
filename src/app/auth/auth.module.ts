@@ -5,11 +5,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
+import { SendEmailComponent } from './send-email/send-email.component';
 
 
 @NgModule({
   declarations: [
-    AuthComponent
+    AuthComponent,
+    SendEmailComponent
   ],
   imports: [
     CommonModule,

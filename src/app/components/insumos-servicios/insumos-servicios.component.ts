@@ -33,7 +33,6 @@ export class InsumosServiciosComponent implements OnInit {
     description:new FormControl('',Validators.required),
     type:new FormControl('',Validators.required),
     unit:new FormControl('',Validators.required),
-    costPrice:new FormControl('',Validators.required),
     salePrice:new FormControl('',Validators.required),
   });
 
@@ -184,7 +183,6 @@ export class InsumosServiciosComponent implements OnInit {
         description:supplie.description.toUpperCase(),
         type: supplie.type,
         unit: supplie.unit,
-        costPrice: supplie.costPrice,
         salePrice: supplie.salePrice
       });
       this.modalTitle="Actualizar Insumo";

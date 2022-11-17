@@ -4,7 +4,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   authState,
-  onAuthStateChanged
+  onAuthStateChanged,
+  sendEmailVerification,
 } from '@angular/fire/auth';
 import {
   Firestore,
@@ -52,12 +53,20 @@ export class AuthFirebaseService {
     });*/
   }
 
+  validarCorreo(){
+  }
+
   logout() {
     return signOut(this.auth);
   }
 
   isLogged(): Observable<any>{
     return authState(this.auth)
+  }
+
+  returnUser(){
+    const user = this.auth.currentUser;
+    return user;
   }
 
   async getUid(){//obtiene el uid del usuario que inicia sesion

@@ -23,7 +23,6 @@
                       <th class="border-top-0">Descripción</th>
                       <th class="border-top-0">Tipo</th>
                       <th class="border-top-0">Unid. Medida</th>
-                      <th class="border-top-0">Precio Costo</th>
                       <th class="border-top-0">Precio Venta</th>
                       <th class="border-top-0 text-center">Acciones</th>
                   </tr>
@@ -45,9 +44,6 @@
                           <span>
                             {{data.unit}}
                           </span>
-                      </td>
-                      <td>
-                          <span>{{data.costPrice}}</span>
                       </td>
                       <td>
                           <span>{{data.salePrice}}</span>
@@ -111,12 +107,7 @@
           </div>
         </div>
         <div class="form-group row mb-3">
-          <div class="col-md-6">
-            <label for="costPrice" class="col-sm-6form-label">Precio costo</label>
-            <div class="col-sm-12">
-              <input type="number" class="form-control" id="costPrice" placeholder="Precio costo" formControlName="costPrice">
-            </div>
-          </div>
+
           <div class="col-md-6">
             <label for="salePrice" class="col-sm-6 form-label">Precio venta</label>
             <div class="col-sm-12">

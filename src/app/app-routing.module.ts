@@ -13,6 +13,7 @@ import { FullComponent } from './layouts/full/full.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
 import { SolicitudesadminComponent } from './components/solicitudesadmin/solicitudesadmin.component';
+import { SendEmailComponent } from './auth/send-email/send-email.component';
 
 //const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['iniciar-sesion']);
 //const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
@@ -24,6 +25,8 @@ const routes: Routes = [
         {path: '', redirectTo: '/inicio', pathMatch: 'full' },
         {path: 'inicio', component:HomeComponent},
         {path: 'nosotros', component:NosotrosComponent},
+        {path: 'verification-email', component:SendEmailComponent},
+
         {
           path: 'clientes',
           component:ClientesComponent,

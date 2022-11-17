@@ -38,7 +38,7 @@ export class ClientesService {
   };
 
   getCustomers():Observable<any[]>{
-    return collectionData(this.customersCollection, { idField: 'Customers' });
+    return collectionData(this.customersCollection, { idField: 'Usuarios' });
 
   }
 
@@ -59,12 +59,11 @@ export class ClientesService {
   searchCustomers(searchText:string):Observable<any[]>{
     searchText=searchText.toUpperCase();
     const q= query(this.customersCollection,
-      orderBy("firstname"),
-      orderBy("lastname"),
+      orderBy("nombre"),
       startAt(searchText),
       endAt(searchText + "\uf8ff"));
 
-    return collectionData(q, { idField: 'customer' });
+    return collectionData(q, { idField: 'Usuarios' });
   }
 
 }

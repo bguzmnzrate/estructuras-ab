@@ -14,6 +14,7 @@ import {
   NgbModal,
   NgbModalOptions
 } from '@ng-bootstrap/ng-bootstrap';
+import { AuthFirebaseService } from 'src/app/auth/services/auth-firebase.service';
 import { FullComponent } from 'src/app/layouts/full/full.component';
 //Services
 
@@ -30,14 +31,24 @@ export class SolicitudesComponent implements OnInit {
   solicitudes:any[]=[];
   uuid:string='';
 
+  /*async capturarUid2(){
+    const uid = await this.auth.getUid();
+    uid?.toString();
+    return uid;
+  }
+  uid = this.capturarUid2();*/
+
+
   form=new FormGroup({
     nombreSolicitud:new FormControl('',Validators.required),
-    archivo:new FormControl('',Validators.required)
+    archivo:new FormControl('',Validators.required),
+    uid:new FormControl('')
   });
 
   constructor(private solicitudesService:SolicitudesService,
               private fb: FormBuilder,
-              private modalService: NgbModal) { }
+              private modalService: NgbModal,
+              private auth:AuthFirebaseService) { }
 
   ngOnInit(): void {
     this.getSolicitudes();
@@ -67,8 +78,10 @@ export class SolicitudesComponent implements OnInit {
   createSolicitudes(): void {
     Swal.fire('Un momento...');
     Swal.showLoading();
-
+    //this.uid = this.auth.getUid();
     let solicitud=this.form.value;
+    //console.log('solicitud ->',solicitud);
+    //console.log('uid ->',this.uid);
     //solicitud.description=solicitud.description.toUpperCase();
     this.solicitudesService.createSolicitud(solicitud).then((uuid:any)=>{
       Swal.hideLoading();

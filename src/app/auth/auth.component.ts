@@ -42,7 +42,6 @@ export class AuthComponent implements OnInit {
   async capturarUid(){
     const uid = await this.authFS.getUid();
     console.log('uid ->',uid);
-
   }
 
 
